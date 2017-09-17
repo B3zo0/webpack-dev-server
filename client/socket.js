@@ -8,6 +8,10 @@ let sock = null;
 function socket(url, handlers) {
   sock = new SockJS(url);
 
+  sock._transportTimeout = function tsTimeout() {
+    return null;
+  };
+
   sock.onopen = function onopen() {
     retries = 0;
   };
